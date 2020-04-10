@@ -48,18 +48,21 @@ Vue.config.productionTip = false
 
 
 import Vuex from 'vuex'
+
 Vue.use(Vuex)
 var car=JSON.parse(localStorage.getItem('car') || '[]');
+var uid =JSON.parse(localStorage.getItem('uid')|| null);
 var store =new Vuex.Store({
   state:{
-    car:car//将购物车中的数据用一个数组 存储起来，在car数组中存储一些商品的对象 例如：{id:商品id,count:购买数量,price:商品单价,selected:是否选中状态}
+    car:car,//将购物车中的数据用一个数组 存储起来，在car数组中存储一些商品的对象 例如：{id:商品id,count:购买数量,price:商品单价,selected:是否选中状态}
+    uid:uid
   },
   mutations:{
     addToCar(state,goodsinfo){//点击加入购物车保存到vuex的car上
       //判断购物车是否以及存在。如果存在只更新数量
       var flag=false;//假设没找到
       state.car.some(item=>{
-        if(item.id==goodsinfo.id){
+        if(item.id==goodsinfo.id){ 
           item.count+=parseInt(goodsinfo.count)
           flag=true;
           return true
@@ -105,6 +108,10 @@ var store =new Vuex.Store({
       })
 
       localStorage.setItem('car',JSON.stringify(state.car))
+    },
+    setuid(state,userid){
+      localStorage.setItem('uid',userid);//把获取的uid存到本地
+     
     }
   },
   getters:{

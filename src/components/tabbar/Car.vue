@@ -31,7 +31,7 @@
                             <p>已勾选商品 <span class="red"> {{ this.$store.getters.getGoodsCountAndAmount.count }}</span> 件 ，
                             总价 ￥<span class="red">  {{ this.$store.getters.getGoodsCountAndAmount.amount }}</span>元</p>
                         </div>
-                         <mt-button type="danger">去结算</mt-button>
+                         <mt-button type="danger" @click="jiesuan">去结算</mt-button>
 					</div>
                    
 				</div>
@@ -42,6 +42,7 @@
 
 <script>
 import numbox from'../../components/subcomment/car_numbox.vue'
+import {Toast} from "mint-ui";
 export default {
     data(){
         return{
@@ -76,6 +77,20 @@ export default {
         selectedChange(id,val){
             //每当点击开关把最新的开关状态同步到store中
             this.$store.commit('updateGoodsSelected',{id,selected:val});
+        },
+        jiesuan(){
+            var list=[];
+            this.$store.state.car.forEach(item=>{
+                if(item.selected){
+                    list.push(item);
+                }
+            })
+            if(list.length>0){
+                this.$router.push({ path: '/Order'});
+            }else{
+                Toast("请选中要结算的商品")
+            }
+            
         }
     },
     components:{

@@ -49,10 +49,11 @@ export default {
                 }else{
                 //    console.log(JSON.stringify(res)), params: { userId: res.body.msg }
                     this.$store.commit('setuid',res.body.msg);
+                   // location.reload();
                      this.$router.push({ path: '/'});//跳转到首页 不会刷新
-                    
-                    // this.$router.replace({path:'/'});//重载
                     location.reload();
+                     //this.$router.replace({path:'/'});//重载
+                   
                 }
             })
         }
@@ -65,7 +66,9 @@ export default {
         // if(null!=this.$store.state.uid){
         //     this.$router.push({ path: '/Myde'});//如果已经登录则直接进入我的页面
         // }
-
+        // if(null!=this.$store.state.uid){
+        //     this.$router.push({ path: '/Home'});
+        // }
     },
     created(){
         console.log("创建之后s")

@@ -28,7 +28,7 @@ Vue.use(Mint);
 import VueResource from 'vue-resource'
 Vue.use(VueResource)
 
-Vue.http.options.root="http://127.0.0.1:8001/move"
+Vue.http.options.root="http://39.97.226.198/move"
 
 
 

@@ -23,7 +23,7 @@ export default new Router({
   mode:'history',
   routes: [
    
-    { path: '/', redirect:'/Index' },
+    { path: '/',component: Index },//redirect:'/'
     { path: '/Car',name: 'Car',component: Car},
     {path: '/Home',name: 'Home',component: Home},
     {path: '/Index',name: 'Index',component: Index},

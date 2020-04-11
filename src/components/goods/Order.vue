@@ -28,7 +28,7 @@
                <ul class="mui-card mui-table-view">
                     <li class="mui-table-view-cell mui-media" v-for="item in OrdergoodsList" :key="item.id">
                         <a href="javascript:;">
-                            <img class="mui-media-object mui-pull-left" src="../../assets/images/IMG_7164.jpg">
+                            <img class="mui-media-object mui-pull-left" :src="item.imgurl">
                             <div class="mui-media-body">
                                 {{item.name}}
                                 <p class='mui-ellipsis'>
@@ -95,7 +95,7 @@ export default {
             var list=[];
             this.$store.state.car.forEach(item=>{
                 if(item.selected){
-                   
+                  
                     list.push(item);
                 }
             })

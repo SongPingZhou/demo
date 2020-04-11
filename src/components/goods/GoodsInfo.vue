@@ -134,12 +134,14 @@ export default {
 
              if(null==this.$store.state.uid){//id等于空去登录页面
                 this.$router.push({ path: '/Myde'});
+                return;
              }
 
             this.ballFlag= !this.ballFlag;
             //  console.log("addToshopCar");
             //拼接出购物车的对象
-            var goodsinfo={id:this.id,name:this.productInfo.title,count:this.selectedCount,price:this.productInfo.sellprice,selected:true}
+            
+            var goodsinfo={id:this.id,name:this.productInfo.title,imgurl:this.productInfo.imgurl,count:this.selectedCount,price:this.productInfo.sellprice,selected:true}
             this.$store.commit('addToCar',goodsinfo);//调用store中的mutations的方法
         },
         beforeEnter(el){

@@ -70,7 +70,7 @@ export default {
         tuichu(){
            localStorage.removeItem("uid");
            localStorage.removeItem("car");
-           this.$router.push({ path: '/Myde'});//跳转到登录页
+           this.$router.push({ path: '/'});//跳转到登录页
            location.reload();
         }
     }
